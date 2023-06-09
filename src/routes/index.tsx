@@ -5,27 +5,34 @@ import Counter from '~/components/starter/counter/counter';
 import Hero from '~/components/starter/hero/hero';
 import Infobox from '~/components/starter/infobox/infobox';
 import Starter from '~/components/starter/next-steps/next-steps';
+import Projects from '~/components/starter/projects/projects';
 
 export default component$(() => {
   return (
     <>
       <Hero />
       <Starter />
+      <Projects />
+      <div
+        role='presentation'
+        class='ellipsis'></div>
+      <div
+        role='presentation'
+        class='ellipsis ellipsis-purple'></div>
 
-      <div role="presentation" class="ellipsis"></div>
-      <div role="presentation" class="ellipsis ellipsis-purple"></div>
-
-      <div class="container container-center container-spacing-xl">
+      <div class='container container-center container-spacing-xl'>
         <h3>
-          You can <span class="highlight">count</span>
+          You can <span class='highlight'>count</span>
           <br /> on me
         </h3>
         <Counter />
       </div>
 
-      <div class="container container-flex">
+      <div class='container container-flex'>
         <Infobox>
-          <div q:slot="title" class="icon icon-cli">
+          <div
+            q:slot='title'
+            class='icon icon-cli'>
             CLI Commands
           </div>
           <>
@@ -54,42 +61,54 @@ export default component$(() => {
 
         <div>
           <Infobox>
-            <div q:slot="title" class="icon icon-apps">
+            <div
+              q:slot='title'
+              class='icon icon-apps'>
               Example Apps
             </div>
             <p>
-              Have a look at the <a href="/demo/flower">Flower App</a> or the{' '}
-              <a href="/demo/todolist">Todo App</a>.
+              Have a look at the <a href='/demo/flower'>Flower App</a> or the{' '}
+              <a href='/demo/todolist'>Todo App</a>.
             </p>
           </Infobox>
 
           <Infobox>
-            <div q:slot="title" class="icon icon-community">
+            <div
+              q:slot='title'
+              class='icon icon-community'>
               Community
             </div>
             <ul>
               <li>
                 <span>Questions or just want to say hi? </span>
-                <a href="https://qwik.builder.io/chat" target="_blank">
+                <a
+                  href='https://qwik.builder.io/chat'
+                  target='_blank'>
                   Chat on discord!
                 </a>
               </li>
               <li>
                 <span>Follow </span>
-                <a href="https://twitter.com/QwikDev" target="_blank">
+                <a
+                  href='https://twitter.com/QwikDev'
+                  target='_blank'>
                   @QwikDev
                 </a>
                 <span> on Twitter</span>
               </li>
               <li>
                 <span>Open issues and contribute on </span>
-                <a href="https://github.com/BuilderIO/qwik" target="_blank">
+                <a
+                  href='https://github.com/BuilderIO/qwik'
+                  target='_blank'>
                   GitHub
                 </a>
               </li>
               <li>
                 <span>Watch </span>
-                <a href="https://qwik.builder.io/media/" target="_blank">
+                <a
+                  href='https://qwik.builder.io/media/'
+                  target='_blank'>
                   Presentations, Podcasts, Videos, etc.
                 </a>
               </li>
@@ -102,11 +121,12 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: 'Welcome to Qwik',
+  title: 'LaReponseDev',
   meta: [
     {
       name: 'description',
-      content: 'Qwik site description',
+      content:
+        "Boostez votre activité avec les applications sur mesure créées par LaReponseDev. Notre expertise en développement d'applications garantit des solutions innovantes et performantes pour répondre à vos besoins spécifiques. Contactez-nous dès maintenant pour concrétiser vos idées et propulser votre entreprise vers le succès numérique !",
     },
   ],
 };

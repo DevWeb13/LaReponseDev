@@ -17,11 +17,44 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
     maxAge: 5,
   });
 };
-
-export const useServerTimeLoader = routeLoader$(() => {
-  return {
-    date: new Date().toISOString(),
-  };
+// const isDev = process.env.NODE_ENV === 'development';
+const isDev = false;
+console.log(isDev);
+/**
+ * It fetches the projects list from the back-end and returns it as a JSON object
+ * @param   {boolean}  isDev - if the app is in development mode
+ * @returns {Promise} - a promise.
+ */
+export const useProjectsLoader = routeLoader$(async () => {
+  if (isDev) {
+    console.log('dev');
+    try {
+      const response = await fetch('http://localhost:5000/projects', {
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      });
+      return response.json();
+    } catch (err) {
+      return console.error(err);
+    }
+  } else {
+    try {
+      const response = await fetch(
+        'https://back-portfolio-devweb13.vercel.app/projects',
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+        }
+      );
+      return await response.json();
+    } catch (error) {
+      return console.log(error);
+    }
+  }
 });
 
 export default component$(() => {

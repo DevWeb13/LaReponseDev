@@ -2,9 +2,9 @@
 
 /* SHELL ---------------------------------------- */
 html {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 body {
@@ -22,12 +22,21 @@ h3 {
 }
 
 h1 {
-  font-size: 3.2rem;
+  font-size: 2rem;
   text-align: center;
 }
 h1 .highlight,
 h3 .highlight {
-  color: var(--qwik-light-blue);
+  /* color: var(--qwik-light-blue); */
+  /* texte couleur degrade */
+  background: -webkit-linear-gradient(
+    left,
+    var(--qwik-light-green) 0%,
+    var(--qwik-light-blue) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 h2 {
@@ -41,7 +50,11 @@ h2 .highlight {
 h3 {
   font-size: 2rem;
 }
-
+@media screen and (min-width: 576px) {
+  h1 {
+    font-size: 4rem;
+  }
+}
 @media screen and (min-width: 768px) {
   h1 {
     font-size: 5rem;
@@ -182,7 +195,7 @@ button.button-small {
 .icon:before {
   width: 18px;
   height: 18px;
-  content: '';
+  content: "";
   display: inline-block;
   margin-right: 20px;
   position: relative;
