@@ -1,15 +1,15 @@
-import { component$ } from "@builder.io/qwik";
-import styles from "./hero.module.css";
+import { component$ } from '@builder.io/qwik';
+import styles from './hero.module.css';
 
 export default component$(() => {
   return (
-    <div class={["container", styles.hero]}>
+    <div class={['container', styles.hero]}>
       <h1>
-        Créez votre <span class="highlight"> succès numérique</span> avec
-        <span class="highlight"> LaReponseDev</span>
+        Passez à la<span class='highlight'> vitesse supérieure</span> avec
+        <span class='highlight'> LaReponseDev</span>
       </h1>
-      <p>Transformez vos idées en applications innovantes !</p>
-      <div class={styles["button-group"]}>
+      <p>Transformez vos idées en applications performantes !</p>
+      <div class={styles['button-group']}>
         <button
           onClick$={async () => {
             const defaults = {
@@ -18,7 +18,7 @@ export default component$(() => {
               gravity: 0,
               decay: 0.95,
               startVelocity: 30,
-              colors: ["006ce9", "ac7ff4", "18b6f6", "713fc2", "ffffff"],
+              colors: ['006ce9', 'ac7ff4', '18b6f6', '713fc2', 'ffffff'],
               origin: {
                 x: 0.5,
                 y: 0.35,
@@ -30,9 +30,9 @@ export default component$(() => {
                 if ((globalThis as any).confetti) {
                   return resolve((globalThis as any).confetti as any);
                 }
-                const script = document.createElement("script");
+                const script = document.createElement('script');
                 script.src =
-                  "https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js";
+                  'https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js';
                 script.onload = () =>
                   resolve((globalThis as any).confetti as any);
                 script.onerror = reject;
@@ -62,15 +62,13 @@ export default component$(() => {
             setTimeout(shoot, 200);
             setTimeout(shoot, 300);
             setTimeout(shoot, 400);
-          }}
-        >
+          }}>
           Time to celebrate
         </button>
         <a
-          href="https://qwik.builder.io/docs"
-          target="_blank"
-          class="button button-dark"
-        >
+          href='https://qwik.builder.io/docs'
+          target='_blank'
+          class='button button-dark'>
           Explore the docs
         </a>
       </div>

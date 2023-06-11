@@ -1,5 +1,7 @@
+import type { Session } from '@auth/core/types';
 import { component$ } from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
+import type { DocumentHead, RequestHandler } from '@builder.io/qwik-city';
+import { useAuthSession } from '~/routes/plugin@auth';
 
 import Counter from '~/components/starter/counter/counter';
 import Hero from '~/components/starter/hero/hero';
@@ -7,9 +9,33 @@ import Infobox from '~/components/starter/infobox/infobox';
 import Starter from '~/components/starter/next-steps/next-steps';
 import Projects from '~/components/starter/projects/projects';
 
+export const onRequest: RequestHandler = (event) => {
+  const session: Session | null = event.sharedMap.get('session');
+  console.log({ session });
+  if (!session || new Date(session.expires) < new Date()) {
+    throw event.redirect(302, `/api/auth/signin?callbackUrl=/`);
+  }
+};
+
 export default component$(() => {
+  const session = useAuthSession();
+  console.log(session.value);
   return (
     <>
+      <div class='videoContainer'>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          id='myVideo'>
+          <source
+            src='./star.mp4'
+            type='video/mp4'
+          />
+        </video>
+      </div>
+      <p>{session.value?.user?.email}</p>;
       <Hero />
       <Starter />
       <Projects />
@@ -19,7 +45,6 @@ export default component$(() => {
       <div
         role='presentation'
         class='ellipsis ellipsis-purple'></div>
-
       <div class='container container-center container-spacing-xl'>
         <h3>
           You can <span class='highlight'>count</span>
@@ -27,7 +52,6 @@ export default component$(() => {
         </h3>
         <Counter />
       </div>
-
       <div class='container container-flex'>
         <Infobox>
           <div
