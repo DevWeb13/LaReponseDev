@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+ 
+Sitemap: https://qwik-app-devweb13.vercel.app/sitemap.xml
