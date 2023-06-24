@@ -17,7 +17,7 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
     maxAge: 5,
   });
 };
-// const isDev = process.env.NODE_ENV === 'development';
+// export const isDev = process.env.NODE_ENV === 'development';
 const isDev = false;
 console.log(isDev);
 /**
