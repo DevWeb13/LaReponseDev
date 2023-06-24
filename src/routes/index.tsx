@@ -1,6 +1,5 @@
-import type { Session } from '@auth/core/types';
 import { component$ } from '@builder.io/qwik';
-import type { DocumentHead, RequestHandler } from '@builder.io/qwik-city';
+import type { DocumentHead } from '@builder.io/qwik-city';
 import { useAuthSession } from '~/routes/plugin@auth';
 
 import Counter from '~/components/starter/counter/counter';
