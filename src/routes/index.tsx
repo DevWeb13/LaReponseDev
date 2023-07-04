@@ -18,7 +18,7 @@ import Projects from '~/components/starter/projects/projects';
 
 export default component$(() => {
   const session = useAuthSession();
-  console.log(session.value);
+  console.log('session.value ' + session.value);
   return (
     <>
       <div class='videoContainer'>
