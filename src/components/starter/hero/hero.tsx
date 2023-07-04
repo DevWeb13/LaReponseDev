@@ -12,9 +12,9 @@ export default component$(() => {
       <div class={styles['button-group']}>
         <button
           onClick$={() => {
-            window.location.href = '/api/auth/signin';
+            window.location.href = 'https://qwik.builder.io/docs';
           }}>
-          Se connecter
+          Explore the docs
         </button>
         <a
           href='https://qwik.builder.io/docs'

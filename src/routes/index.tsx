@@ -1,6 +1,5 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
-import { useAuthSession } from '~/routes/plugin@auth';
 
 import Counter from '~/components/starter/counter/counter';
 import Hero from '~/components/starter/hero/hero';
@@ -8,17 +7,7 @@ import Infobox from '~/components/starter/infobox/infobox';
 import Starter from '~/components/starter/next-steps/next-steps';
 import Projects from '~/components/starter/projects/projects';
 
-// export const onRequest: RequestHandler = (event) => {
-//   const session: Session | null = event.sharedMap.get('session');
-//   console.log({ session });
-//   if (!session || new Date(session.expires) < new Date()) {
-//     throw event.redirect(302, `/api/auth/signin?callbackUrl=/`);
-//   }
-// };
-
 export default component$(() => {
-  const session = useAuthSession();
-  console.log('session.value ' + session.value);
   return (
     <>
       <div class='videoContainer'>
@@ -34,7 +23,6 @@ export default component$(() => {
           />
         </video>
       </div>
-      <p>{session.value?.user?.email}</p>;
       <Hero />
       <Starter />
       <Projects />
