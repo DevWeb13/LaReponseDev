@@ -16,7 +16,7 @@ export default component$(() => {
   const projects = useProjectsLoader();
 
   return (
-    <ul>
+    <ul id='projets'>
       {projects.value.map((project: Project) => (
         <li key={project._id}>
           <h2>{project.name}</h2>
