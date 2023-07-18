@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
  
-Sitemap: https://qwik-app-devweb13.vercel.app/sitemap.xml
+Sitemap: https://la-reponse-dev-devweb13.vercel.app/sitemap.xml

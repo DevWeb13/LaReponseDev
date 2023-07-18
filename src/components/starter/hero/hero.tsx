@@ -10,17 +10,17 @@ export default component$(() => {
       </h1>
       <p>Transformez vos idées en applications performantes !</p>
       <div class={styles['button-group']}>
-        <button
-          onClick$={() => {
-            window.location.href = 'https://qwik.builder.io/docs';
-          }}>
-          Explore the docs
-        </button>
+        <a
+          href='#projets'
+          class='button'>
+          Mes projets
+        </a>
+
         <a
           href='https://qwik.builder.io/docs'
           target='_blank'
           class='button button-dark'>
-          Explore the docs
+          Me contacter
         </a>
       </div>
     </div>

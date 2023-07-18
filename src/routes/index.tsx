@@ -2,29 +2,12 @@ import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 
 import Counter from '~/components/starter/counter/counter';
-import Hero from '~/components/starter/hero/hero';
 import Infobox from '~/components/starter/infobox/infobox';
-import Starter from '~/components/starter/next-steps/next-steps';
 import Projects from '~/components/starter/projects/projects';
 
 export default component$(() => {
   return (
     <>
-      <div class='videoContainer'>
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          id='myVideo'>
-          <source
-            src='./star.mp4'
-            type='video/mp4'
-          />
-        </video>
-      </div>
-      <Hero />
-      <Starter />
       <Projects />
       <div
         role='presentation'
