@@ -9,9 +9,7 @@ export default component$(() => {
   return (
     <>
       <Projects />
-      <div
-        role='presentation'
-        class='ellipsis'></div>
+
       <div
         role='presentation'
         class='ellipsis ellipsis-purple'></div>

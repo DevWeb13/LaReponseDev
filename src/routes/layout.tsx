@@ -16,9 +16,8 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
     maxAge: 5,
   });
 };
-// export const isDev = process.env.NODE_ENV === 'development';
-const isDev = false;
-console.log(isDev);
+export const isDev = process.env.NODE_ENV === 'development';
+
 /**
  * It fetches the projects list from the back-end and returns it as a JSON object
  * @param   {boolean}  isDev - if the app is in development mode

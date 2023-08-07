@@ -1,3 +1,8 @@
+.header {
+  display: flex;
+  width: 100%;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -44,10 +49,12 @@
   .wrapper {
     flex-direction: row;
     justify-content: space-between;
+    width: 100%;
   }
   .header ul {
+    display: flex;
+    width: fit-content;
     justify-content: baseline;
-    width: inherit;
     gap: 30px;
   }
 }
