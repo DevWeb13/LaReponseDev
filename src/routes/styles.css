@@ -87,7 +87,7 @@ ul {
 /* CONTAINER ------------------------------------ */
 .container {
   margin: 0 auto;
-  padding: 30px 40px;
+  padding: 20px 30px;
 }
 .container.container-purple {
   background: var(--qwik-light-purple);
@@ -131,7 +131,6 @@ button {
   font-size: 0.8rem;
   padding: 15px 20px;
   text-align: center;
-  min-width: 3.75rem;
 }
 
 a.button.button-dark,
