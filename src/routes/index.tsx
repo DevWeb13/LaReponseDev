@@ -1,14 +1,37 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 
-import Counter from '~/components/starter/counter/counter';
-import Infobox from '~/components/starter/infobox/infobox';
+// import Counter from '~/components/starter/counter/counter';
+// import Infobox from '~/components/starter/infobox/infobox';
 import Projects from '~/components/starter/projects/projects';
 
 export default component$(() => {
   return (
     <>
       <Projects />
+
+      {/* <section class='hero'>
+        <div class='container container-center container-spacing-xl'>
+          <h1>
+            <span class='highlight'>LaReponseDev</span>
+            <br /> est là pour vous
+          </h1>
+          <p>
+            Boostez votre activité avec les applications sur mesure développé
+            par LaReponseDev. Notre expertise en développement d'applications
+            garantit des solutions innovantes et performantes pour répondre à
+            vos besoins spécifiques. Contactez-nous dès maintenant pour
+            concrétiser vos idées et propulser votre entreprise vers le succès
+            numérique !
+          </p>
+          <a
+            href='https://qwik.builder.io/docs'
+            target='_blank'
+            class='button button-primary'>
+            Get Started
+          </a>
+        </div>
+      </section>
 
       <div
         role='presentation'
@@ -107,7 +130,7 @@ export default component$(() => {
             </ul>
           </Infobox>
         </div>
-      </div>
+      </div> */}
     </>
   );
 });

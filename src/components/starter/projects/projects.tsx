@@ -1,52 +1,54 @@
-import { component$ } from '@builder.io/qwik';
+import { component$, useSignal } from '@builder.io/qwik';
 import { useProjectsLoader } from '~/routes/layout';
+import { ProjectContainer } from '~/components/starter/projectContainer/projectContainer';
+import styles from './projects.module.css';
 
-interface Project {
+export interface Page {
+  _id: string;
+  image: string;
+  description: string;
+  url: string;
+  features: string[];
+}
+
+export interface Project {
   _id: string;
   name: string;
   description: string;
-  image: string;
-  link: string;
+  pages: Page[];
   gitHub: string;
-  technologies: string[];
   date: string;
+  category: string;
+  technologies: string[];
+  logo: string;
 }
 
 export default component$(() => {
+  /**  @constant {Project[]} projects - the list of the projects*/
   const projects = useProjectsLoader();
 
+  const indexOfPage = useSignal(0);
+
   return (
-    <ul id='projects'>
-      {projects.value.map((project: Project) => (
-        <li key={project._id}>
-          <h2>{project.name}</h2>
-          <p>{project.description}</p>
-          <img
-            src={project.image}
-            alt={project.name}
-            width='200'
-            height='200'
-          />
-          <a
-            href={project.link}
-            target='_blank'
-            rel='noopener noreferrer'>
-            {project.link}
-          </a>
-          <a
-            href={project.gitHub}
-            target='_blank'
-            rel='noopener noreferrer'>
-            {project.gitHub}
-          </a>
-          <ul>
-            {project.technologies.map((technology) => (
-              <li key={technology}>{technology}</li>
-            ))}
-          </ul>
-          <p>{project.date}</p>
-        </li>
-      ))}
-    </ul>
+    <div
+      class={
+        styles.projectsContainer + ' container container-flex container-center'
+      }>
+      <h2 class='projectsTitle'>
+        Les projets de <span class='highlight'>LaReponseDev</span>
+      </h2>
+      <section
+        id='projects'
+        class={styles.projects}>
+        {projects &&
+          projects.value.map((project: Project) => (
+            <ProjectContainer
+              key={project._id}
+              project={project}
+              indexOfPage={indexOfPage}
+            />
+          ))}
+      </section>
+    </div>
   );
 });

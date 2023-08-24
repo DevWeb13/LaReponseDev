@@ -1,4 +1,5 @@
 import { component$, Slot, useStyles$ } from '@builder.io/qwik';
+
 import { routeLoader$ } from '@builder.io/qwik-city';
 import type { RequestHandler } from '@builder.io/qwik-city';
 import StartView from '~/components/startView/startView';
@@ -27,7 +28,7 @@ export const useProjectsLoader = routeLoader$(async () => {
   if (isDev) {
     console.log('dev');
     try {
-      const response = await fetch('http://localhost:5000/projects', {
+      const response = await fetch('http://localhost:5000/projectsLRD', {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
@@ -40,7 +41,7 @@ export const useProjectsLoader = routeLoader$(async () => {
   } else {
     try {
       const response = await fetch(
-        'https://back-portfolio-devweb13.vercel.app/projects',
+        'https://back-portfolio-devweb13.vercel.app/projectsLRD',
         {
           headers: {
             'Content-Type': 'application/json',
