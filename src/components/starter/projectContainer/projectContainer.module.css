@@ -3,7 +3,7 @@
   flex-direction: column;
 
   gap: 12px;
-  width: fit-content;
+  width: 100%;
   max-width: 430px;
   /* height: 409px; */
   background: -webkit-linear-gradient(
@@ -50,6 +50,8 @@
 
 .projectUrl:hover {
   text-decoration: underline;
+  transition: all 0.2s ease-in-out;
+  color: var(--qwik-light-green);
 }
 .projectName {
   /* color: var(--qwik-dark-background); */
@@ -74,7 +76,8 @@
 .projectLogo {
   /* width: fit-content; */
   width: 100%;
-  border-radius: 50%;
+  height: 100%;
+  /* border-radius: 50%; */
   object-fit: cover;
   object-position: center;
 }

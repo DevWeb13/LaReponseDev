@@ -1,4 +1,5 @@
 .projectsContainer {
+  display: flex;
   flex-direction: column;
 }
 

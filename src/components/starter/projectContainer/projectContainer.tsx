@@ -73,7 +73,9 @@ export const ProjectContainer = component$(
         </div>
         <a
           class={styles.projectUrl + ' highlight'}
-          href={project.pages[indexOfPage.value].url}>
+          href={project.pages[indexOfPage.value].url}
+          target='_blank'
+          rel='noopener noreferrer'>
           {project.pages[indexOfPage.value].url}
         </a>
         <h2 class={styles.projectName}>{project.name}</h2>
@@ -90,7 +92,7 @@ export const ProjectContainer = component$(
             <img
               src={project.logo}
               alt='logo'
-              class='logo'
+              class={styles.projectLogo}
               width={50}
               height={50}
             />

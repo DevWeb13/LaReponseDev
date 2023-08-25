@@ -40,14 +40,13 @@ export default component$(() => {
       <section
         id='projects'
         class={styles.projects}>
-        {projects &&
-          projects.value.map((project: Project) => (
-            <ProjectContainer
-              key={project._id}
-              project={project}
-              indexOfPage={indexOfPage}
-            />
-          ))}
+        {projects.value.map((project: Project) => (
+          <ProjectContainer
+            key={project._id}
+            project={project}
+            indexOfPage={indexOfPage}
+          />
+        ))}
       </section>
     </div>
   );
