@@ -22,8 +22,20 @@
 .projectImgContainer {
   /* width: 100%; */
   /* height: 288px; */
+  position: relative;
   max-width: 100vw;
   border-radius: 15px;
+  overflow: hidden;
+}
+
+/* .projectImgContainer:hover {
+  cursor: pointer;
+} */
+
+.projectImgHover {
+  opacity: 0.5;
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .projectImg {
@@ -31,13 +43,22 @@
   border-radius: 15px;
   object-fit: cover;
   object-position: left;
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out;
+  transform: translateX(0);
 }
 
-.projectImgAnimation {
-  opacity: 0.1;
-  transition: opacity 0.3s ease-in-out;
+.projectImgAnimExit {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.projectImgAnimationStop {
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.projectImgAnimEnter {
+  opacity: 0;
+  transform: translateX(100%);
 }
 
 .projectUrl {

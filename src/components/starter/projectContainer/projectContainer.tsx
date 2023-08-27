@@ -30,8 +30,9 @@ interface ProjectContainerProps {
 export const ProjectContainer = component$(
   ({ project, indexOfPage }: ProjectContainerProps) => {
     const imgRef = useSignal<Element>();
+    const isHovered = useSignal(false);
 
-    const setIndexOfImage = $((newValue: number) => {
+    const setIndexOfPage = $((newValue: number) => {
       if (newValue > project.pages.length - 1) {
         return (indexOfPage.value = 0);
       }
@@ -43,33 +44,53 @@ export const ProjectContainer = component$(
 
     useVisibleTask$(({ cleanup }) => {
       setTimeout(() => {
-        imgRef?.value?.classList.add(styles.projectImgAnimation);
+        imgRef?.value?.classList.add(styles.projectImgAnimExit);
       }, 4700);
 
       const update = () => {
-        imgRef?.value?.classList.remove(styles.projectImgAnimation);
-        setIndexOfImage(indexOfPage.value + 1);
+        imgRef?.value?.classList.remove(styles.projectImgAnimExit);
+        imgRef?.value?.classList.add(styles.projectImgAnimEnter);
         setTimeout(() => {
-          imgRef?.value?.classList.add(styles.projectImgAnimation);
+          imgRef?.value?.classList.remove(styles.projectImgAnimEnter);
+          imgRef?.value?.classList.add(styles.projectImgAnimationStop);
+          setIndexOfPage(indexOfPage.value + 1);
+        }, 300);
+
+        setTimeout(() => {
+          imgRef?.value?.classList.remove(styles.projectImgAnimationStop);
+          imgRef?.value?.classList.add(styles.projectImgAnimExit);
         }, 4700);
       };
+
       const interval = setInterval(update, 5000);
       cleanup(() => clearInterval(interval));
     });
 
     return (
       <article class={styles.projectContainer}>
-        <div class={styles.projectImgContainer}>
-          {
-            <img
-              src={project.pages[indexOfPage.value].image}
-              alt='project'
-              class={styles.projectImg}
-              width={400}
-              height={220}
-              ref={imgRef}
-            />
-          }
+        <div
+          class={styles.projectImgContainer}
+          onMouseEnter$={(event, currentTarget) => {
+            isHovered.value = true;
+            currentTarget.classList.add(styles.projectImgHover);
+          }}
+          onMouseLeave$={(event, currentTarget) => {
+            isHovered.value = false;
+            currentTarget.classList.remove(styles.projectImgHover);
+          }}>
+          <button
+            class={styles.projectButton + ' ' + styles.projectButtonLeft}
+            onClick$={() => setIndexOfPage(indexOfPage.value - 1)}>
+            P
+          </button>
+          <img
+            src={project.pages[indexOfPage.value].image}
+            alt='project'
+            class={styles.projectImg}
+            width={400}
+            height={220}
+            ref={imgRef}
+          />
         </div>
         <a
           class={styles.projectUrl + ' highlight'}
