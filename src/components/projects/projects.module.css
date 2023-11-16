@@ -1,0 +1,37 @@
+.projectsContainer {
+  display: flex;
+  flex-direction: column;
+
+  line-height: 1.25;
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.projectContainer {
+  width: 300px;
+  max-width: 100%;
+  color: var(--qwik-dark-text);
+  /* border: 1px solid var(--qwik-light-purple); */
+  background-color: var(--qwik-dirty-black);
+}
+.projectContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+
+.projectName {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+.projectImg {
+  height: 150px;
+  width: 100%;
+}

@@ -1,3 +1,12 @@
+.footer {
+  background-color: var(--qwik-dark-blue);
+  color: white;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .anchor {
   color: white !important;
   display: block;

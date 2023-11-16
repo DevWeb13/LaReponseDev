@@ -1,7 +1,7 @@
 import { component$ } from '@builder.io/qwik';
-import Header from '~/components/starter/header/header';
+import Header from '~/components/header/header';
 import Hero from '~/components/starter/hero/hero';
-import ButtonNext from '~/components/starter/buttonNext/buttonNext';
+import ButtonNext from '~/components/buttonNext/buttonNext';
 import styles from './startView.module.css';
 
 export default component$(() => {
@@ -22,7 +22,7 @@ export default component$(() => {
         </video>
       </div>
       <Hero />
-      <ButtonNext href='#projects' />
+      {/* <ButtonNext href='#projects' /> */}
     </div>
   );
 });

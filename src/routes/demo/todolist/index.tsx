@@ -37,15 +37,17 @@ export default component$(() => {
 
   return (
     <>
-      <div class="container container-center">
+      <div class='container center'>
         <h1>
-          <span class="highlight">TODO</span> List
+          <span class='highlight'>TODO</span> List
         </h1>
       </div>
 
-      <div role="presentation" class="ellipsis"></div>
+      <div
+        role='presentation'
+        class='ellipsis'></div>
 
-      <div class="container container-center">
+      <div class='container center'>
         {(list.value.length && (
           <ul class={styles.list}>
             {list.value.map((item, index) => (
@@ -55,15 +57,26 @@ export default component$(() => {
         )) || <span class={styles.empty}>No items found</span>}
       </div>
 
-      <div class="container container-center">
-        <Form action={action} spaReset>
-          <input type="text" name="text" required class={styles.input} />{' '}
-          <button type="submit" class="button-dark">
+      <div class='container center'>
+        <Form
+          action={action}
+          spaReset>
+          <input
+            type='text'
+            name='text'
+            required
+            class={styles.input}
+          />{' '}
+          <button
+            type='submit'
+            class='button-dark'>
             Add item
           </button>
         </Form>
 
-        <p class={styles.hint}>PS: This little app works even when JavaScript is disabled.</p>
+        <p class={styles.hint}>
+          PS: This little app works even when JavaScript is disabled.
+        </p>
       </div>
     </>
   );

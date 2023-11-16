@@ -1,5 +1,6 @@
 import { component$ } from '@builder.io/qwik';
 import styles from './hero.module.css';
+import { Link } from '@builder.io/qwik-city';
 
 export default component$(() => {
   return (
@@ -8,20 +9,22 @@ export default component$(() => {
         Passez à la<span class='highlight'> vitesse supérieure</span> avec
         <span class='highlight'> LaReponseDev</span>
       </h1>
-      <p>Transformez vos idées en applications performantes !</p>
+      <h2 class={styles.heroH2}>
+        Transformez vos idées en applications performantes !
+      </h2>
       <div class={styles['button-group']}>
-        <a
+        <Link
           href='#projets'
           class='button'>
           Mes projets
-        </a>
+        </Link>
 
-        <a
+        <Link
           href='https://qwik.builder.io/docs'
           target='_blank'
           class='button button-dark'>
           Me contacter
-        </a>
+        </Link>
       </div>
     </div>
   );
