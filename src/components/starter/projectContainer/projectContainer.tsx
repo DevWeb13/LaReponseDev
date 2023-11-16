@@ -19,7 +19,7 @@ interface ProjectContainerProps {
  * @param   {string}  props.project.name - the name of the project
  * @param   {string}  props.project.description - the description of the project
  * @param   {PageProps[]}  props.project.pages - the pages of the project
- * @param   {string}  props.project.gitHub - the link to the GitHub repository
+ * @param   {string}  props.project.github - the link to the GitHub repository
  * @param   {string}  props.project.date - the date of the project
  * @param   {string}  props.project.category - the category of the project
  * @param   {string[]}  props.project.technologies - the technologies used in the project
@@ -103,7 +103,7 @@ export const ProjectContainer = component$(
         <p class={styles.projectDescription}>{project.description}</p>
         <div class={styles.projectButtonContainer}>
           <a
-            href={project.gitHub}
+            href={project.github}
             class='button'
             target='_blank'
             rel='noopener noreferrer'>
