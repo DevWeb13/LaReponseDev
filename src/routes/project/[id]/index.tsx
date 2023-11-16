@@ -73,13 +73,13 @@ export default component$(() => {
   const images = createArrayImages(project.value);
   // console.log('project', project.value);
   const {
-    _id,
+    // _id,
     name,
     description,
     pages,
     github,
 
-    technologies,
+    // technologies,
     logo,
     sonarCloudProjectKey,
   } = project.value;

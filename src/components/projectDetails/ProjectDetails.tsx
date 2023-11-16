@@ -1,10 +1,5 @@
 import type { Signal } from '@builder.io/qwik';
-import {
-  component$,
-  useSignal,
-  useTask$,
-  useVisibleTask$,
-} from '@builder.io/qwik';
+import { component$ } from '@builder.io/qwik';
 import styles from './projectDetails.module.css';
 
 interface ProjectDetailsProps {
