@@ -1,10 +1,10 @@
-import { component$, Slot, useStyles$ } from '@builder.io/qwik';
-
-import { routeLoader$ } from '@builder.io/qwik-city';
+import { Slot, component$, useStyles$ } from '@builder.io/qwik';
 import type { RequestHandler } from '@builder.io/qwik-city';
-
+import { routeLoader$ } from '@builder.io/qwik-city';
+import Header from '~/components/header/header';
 import styles from './styles.css?inline';
-import Footer from '~/components/footer/footer';
+
+import { isDev } from '~/routes/layout';
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -16,23 +16,20 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
     maxAge: 5,
   });
 };
-export const isDev = process.env.NODE_ENV === 'development';
 
-/**
- * It fetches the projects list from the back-end and returns it as a JSON object
- * @param   {boolean}  isDev - if the app is in development mode
- * @returns {Promise} - a promise.
- */
-export const useProjectsLoader = routeLoader$(async () => {
+export const useProjectDetails = routeLoader$(async (requestEvent) => {
+  console.log('requestEvent', requestEvent.params.id);
   if (isDev) {
-    console.log('dev');
     try {
-      const response = await fetch('http://localhost:5000/projects', {
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-      });
+      const response = await fetch(
+        `http://localhost:5000/projects/${requestEvent.params.id}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+        }
+      );
       return response.json();
     } catch (err) {
       return console.error(err);
@@ -40,7 +37,7 @@ export const useProjectsLoader = routeLoader$(async () => {
   } else {
     try {
       const response = await fetch(
-        'https://la-reponse-dev-server.vercel.app/projects',
+        `https://la-reponse-dev-server.vercel.app/projects/${requestEvent.params.id}`,
         {
           headers: {
             'Content-Type': 'application/json',
@@ -50,18 +47,17 @@ export const useProjectsLoader = routeLoader$(async () => {
       );
       return await response.json();
     } catch (error) {
-      return console.log(error);
+      return console.error(error);
     }
   }
 });
 
 export default component$(() => {
   useStyles$(styles);
-
   return (
     <>
+      <Header />
       <Slot />
-      <Footer />
     </>
   );
 });

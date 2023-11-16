@@ -1,0 +1,27 @@
+/* ************Gallery************ */
+
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+  height: auto;
+}
+
+.image-gallery-content button {
+  color: var(--qwik-light-blue);
+  cursor: pointer;
+}
+
+.image-gallery-content button:hover {
+  color: var(--qwik-dark-blue);
+}
+
+.image-gallery-thumbnail .image-gallery-thumbnail-image:hover {
+  outline: 4px solid var(--qwik-dark-blue);
+}
+
+.image-gallery-thumbnail.active,
+.image-gallery-thumbnail:focus {
+  border: 4px solid var(--qwik-light-blue);
+}
+
+.projectDetailsOut {
+  opacity: 0;
+}

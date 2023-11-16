@@ -1,27 +1,28 @@
 import { component$ } from '@builder.io/qwik';
 import { LogoTricolor } from '../icons/logoTricolor';
 import styles from './header.module.css';
+import { Link } from '@builder.io/qwik-city';
 
 export default component$(() => {
   return (
     <header class={styles.header}>
       <div class={['container', styles.wrapper]}>
         <div class={styles.logo}>
-          <a
+          <Link
             href='/'
             title='lareponsedev'>
             <LogoTricolor
               height={150}
               width={150}
             />
-          </a>
+          </Link>
         </div>
         <ul>
           <li>
-            <a href='#projets'>Mes projets</a>
+            <Link href='#projets'>Mes projets</Link>
           </li>
           <li>
-            <a href='#examples'>Me contacter</a>
+            <Link href='#examples'>Me contacter</Link>
           </li>
         </ul>
       </div>

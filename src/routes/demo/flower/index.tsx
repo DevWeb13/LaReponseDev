@@ -1,4 +1,9 @@
-import { component$, useVisibleTask$, useStore, useStylesScoped$ } from '@builder.io/qwik';
+import {
+  component$,
+  useVisibleTask$,
+  useStore,
+  useStylesScoped$,
+} from '@builder.io/qwik';
 import { type DocumentHead, useLocation } from '@builder.io/qwik-city';
 import styles from './flower.css?inline';
 
@@ -20,15 +25,17 @@ export default component$(() => {
   });
 
   return (
-    <div class="container container-center">
-      <div role="presentation" class="ellipsis"></div>
+    <div class='container center'>
+      <div
+        role='presentation'
+        class='ellipsis'></div>
       <h1>
-        <span class="highlight">Generate</span> Flowers
+        <span class='highlight'>Generate</span> Flowers
       </h1>
 
       <input
-        class="input"
-        type="range"
+        class='input'
+        type='range'
         value={state.number}
         max={50}
         onInput$={(ev) => {
@@ -42,8 +49,7 @@ export default component$(() => {
         class={{
           host: true,
           pride: loc.url.searchParams.get('pride') === 'true',
-        }}
-      >
+        }}>
         {Array.from({ length: state.number }, (_, i) => (
           <div
             key={i}

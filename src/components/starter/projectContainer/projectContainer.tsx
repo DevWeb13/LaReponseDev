@@ -1,7 +1,7 @@
 import { component$, useVisibleTask$, $, useSignal } from '@builder.io/qwik';
 import styles from './projectContainer.module.css';
 import type { Signal } from '@builder.io/qwik';
-import type { Project } from '~/components/starter/projects/projects';
+import type { Project } from '~/components/projects/projects';
 
 interface ProjectContainerProps {
   project: Project;

@@ -1,0 +1,39 @@
+.projectDetailsSonarCloudBadge {
+  width: fit-content;
+}
+.sonarcloudBadges {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.badgeGroup {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  gap: 1rem;
+}
+
+.badgeGroup h3 {
+  text-wrap: nowrap;
+}
+
+.badge {
+  width: fit-content;
+}
+
+@media screen and (min-width: 768px) {
+  .sonarcloudBadges {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .badgeGroup {
+    flex: 1;
+  }
+
+  .badgeGroup:last-child {
+    margin-right: 0;
+  }
+}

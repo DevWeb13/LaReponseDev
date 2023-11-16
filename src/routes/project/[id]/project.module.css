@@ -1,0 +1,103 @@
+.projectLogo {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.projectLogoCarsPat {
+  width: 7rem;
+}
+
+.projectLogoDesktop {
+  display: none;
+}
+
+.projectDetailsTitle {
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.buttonDisabled,
+div.buttonDisabled:hover {
+  cursor: not-allowed;
+  background-color: var(--qwik-light-blue);
+  color: var(--qwik-dark-text);
+  position: relative;
+  color: red;
+}
+
+.featureEnter {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.featureEnterActive {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.featureExit {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.featureExitActive {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+@media (min-width: 576px) {
+  .projectLogo {
+    width: 3rem;
+    height: 3rem;
+  }
+  .projectLogoCarsPat {
+    width: 8rem;
+  }
+  .projectDetailsTitle {
+    height: 120px;
+  }
+}
+
+@media (min-width: 992px) {
+  .projectGalleryAndDetails {
+    display: flex;
+    justify-content: space-around;
+
+    gap: 2rem;
+    background-color: var(--qwik-dirty-black);
+    padding: 3rem 1rem;
+    min-height: 600px;
+  }
+  .projectGalleryContainer {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+  .projectGalleryContainer qwik-react {
+    max-width: 100%;
+  }
+  .projectLogoContainer {
+    display: none;
+  }
+  .projectLogoDesktop {
+    display: block;
+    width: 100%;
+    height: 100px;
+  }
+  .projectLogoCarsPat {
+    height: auto;
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .buttonDisabled:hover {
+    cursor: pointer;
+  }
+}

@@ -1,17 +1,21 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
+import StartView from '~/components/startView/startView';
 
 // import Counter from '~/components/starter/counter/counter';
 // import Infobox from '~/components/starter/infobox/infobox';
-import Projects from '~/components/starter/projects/projects';
+import Projects from '~/components/projects/projects';
 
 export default component$(() => {
   return (
     <>
-      <Projects />
+      <StartView />
+      <main class='bigCont'>
+        <Projects />
+      </main>
 
       {/* <section class='hero'>
-        <div class='container container-center container-spacing-xl'>
+        <div class='container center container-spacing-xl'>
           <h1>
             <span class='highlight'>LaReponseDev</span>
             <br /> est là pour vous
@@ -36,14 +40,14 @@ export default component$(() => {
       <div
         role='presentation'
         class='ellipsis ellipsis-purple'></div>
-      <div class='container container-center container-spacing-xl'>
+      <div class='container center container-spacing-xl'>
         <h3>
           You can <span class='highlight'>count</span>
           <br /> on me
         </h3>
         <Counter />
       </div>
-      <div class='container container-flex'>
+      <div class='container '>
         <Infobox>
           <div
             q:slot='title'
