@@ -17,9 +17,9 @@ export const ProjectDetails = component$(
   ({ pages, indexSignal }: ProjectDetailsProps) => {
     return (
       <div class={styles.projectDetailsContainer}>
-        <h3 class={styles.projectDetailsTitle + ' ' + 'highlight'}>
+        <h2 class={styles.projectDetailsTitle + ' ' + 'highlight'}>
           {pages[indexSignal.value].description}
-        </h3>
+        </h2>
         <ul class={styles.projectDetailsList}>
           {pages[indexSignal.value].features.map((feature: string) => (
             <div

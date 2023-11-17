@@ -9,7 +9,7 @@ interface SonarCloudBadgesProps {
 export default component$(({ sonarCloudProjectKey }: SonarCloudBadgesProps) => {
   return (
     <>
-      <h3 class={styles.projectDetailsTitle + ' ' + 'highlight'}>
+      <h2 class={styles.projectDetailsTitle + ' ' + 'highlight'}>
         Mesures{' '}
         <Link
           href={`https://sonarcloud.io/dashboard?id=${sonarCloudProjectKey}`}
@@ -17,7 +17,7 @@ export default component$(({ sonarCloudProjectKey }: SonarCloudBadgesProps) => {
           rel='noopener noreferrer'>
           SonarCloud.io
         </Link>
-      </h3>
+      </h2>
 
       <div class={styles.sonarcloudBadges}>
         <div class={styles.badgeGroup}>

@@ -1,11 +1,11 @@
-.hero {
+div.hero {
   display: flex;
-  vertical-align: middle;
+
   flex-direction: column;
-  flex-wrap: nowrap;
+
   align-items: center;
-  justify-content: space-around;
-  gap: 40px;
+  gap: 3rem;
+
   flex-grow: 1;
 }
 
@@ -24,8 +24,8 @@
 }
 
 @media screen and (min-width: 768px) {
-  .hero {
-    gap: 60px;
-    height: 500px;
+  div.hero {
+    gap: 4rem;
+    max-width: 1000px;
   }
 }

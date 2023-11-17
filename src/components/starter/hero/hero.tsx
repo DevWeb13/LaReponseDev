@@ -9,9 +9,8 @@ export default component$(() => {
         Passez à la<span class='highlight'> vitesse supérieure</span> avec
         <span class='highlight'> LaReponseDev</span>
       </h1>
-      <h2 class={styles.heroH2}>
-        Transformez vos idées en applications performantes !
-      </h2>
+      <h2 class={styles.heroH2}>Création de site web</h2>
+      <h3>Transformez vos idées en applications performantes</h3>
       <div class={styles['button-group']}>
         <Link
           href='#projets'

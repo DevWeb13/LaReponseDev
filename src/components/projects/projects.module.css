@@ -12,6 +12,10 @@
   gap: 2rem;
 }
 
+.projects p {
+  text-align: center;
+}
+
 .projectContainer {
   width: 300px;
   max-width: 100%;

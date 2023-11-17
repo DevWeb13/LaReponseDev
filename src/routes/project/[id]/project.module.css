@@ -21,9 +21,7 @@
 div.buttonDisabled,
 div.buttonDisabled:hover {
   cursor: not-allowed;
-  background-color: var(--qwik-light-blue);
-  color: var(--qwik-dark-text);
-  position: relative;
+
   color: red;
 }
 

@@ -90,7 +90,7 @@ export default component$(() => {
       <div class='ellipsis ' />
       <header class='container column center'>
         <h1 class={styles.projectName + ' ' + 'highlight'}>{name}</h1>
-        <p class={styles.projectDescription}>{description}</p>
+        <h2 class={styles.projectDescription}>{description}</h2>
         <div class={styles.projectLogoContainer}>
           <img
             src={logo}
@@ -147,7 +147,7 @@ export default component$(() => {
               href={pages[indexSignal.value].url}
               target='_blank'
               rel='noopener noreferrer'>
-              {pages[indexSignal.value].url}
+              Voir la page
             </Link>
           )}
           <Link
