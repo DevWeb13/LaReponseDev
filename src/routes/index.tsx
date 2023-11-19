@@ -5,10 +5,14 @@ import StartView from '~/components/startView/startView';
 // import Counter from '~/components/starter/counter/counter';
 // import Infobox from '~/components/starter/infobox/infobox';
 import Projects from '~/components/projects/projects';
+import { useAuthSession } from '~/routes/plugin@auth';
 
 export default component$(() => {
+  const session = useAuthSession();
+  console.log(session.value);
   return (
     <>
+      <p>{session.value?.user?.email}</p>
       <StartView />
       <main class='bigCont'>
         <Projects />

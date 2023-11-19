@@ -5,6 +5,7 @@ import type { RequestHandler } from '@builder.io/qwik-city';
 
 import styles from './styles.css?inline';
 import Footer from '~/components/footer/footer';
+// import type { Session } from '@auth/core/types';
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -54,6 +55,14 @@ export const useProjectsLoader = routeLoader$(async () => {
     }
   }
 });
+
+// export const onRequest: RequestHandler = (event) => {
+//   const session: Session | null = event.sharedMap.get('session');
+//   console.log({ session });
+//   if (!session || new Date(session.expires) < new Date()) {
+//     throw event.redirect(302, `/api/auth/signin?callbackUrl=/`);
+//   }
+// };
 
 export default component$(() => {
   useStyles$(styles);
