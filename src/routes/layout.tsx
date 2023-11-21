@@ -4,7 +4,6 @@ import { routeLoader$ } from '@builder.io/qwik-city';
 import type { RequestHandler } from '@builder.io/qwik-city';
 
 import styles from './styles.css?inline';
-import Footer from '~/components/footer/footer';
 // import type { Session } from '@auth/core/types';
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
@@ -70,7 +69,6 @@ export default component$(() => {
   return (
     <>
       <Slot />
-      <Footer />
     </>
   );
 });

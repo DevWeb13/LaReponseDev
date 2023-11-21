@@ -6,6 +6,7 @@ import StartView from '~/components/startView/startView';
 // import Infobox from '~/components/starter/infobox/infobox';
 import Projects from '~/components/projects/projects';
 import { useAuthSession } from '~/routes/plugin@auth';
+import Footer from '~/components/footer/footer';
 
 export default component$(() => {
   const session = useAuthSession();
@@ -139,6 +140,7 @@ export default component$(() => {
           </Infobox>
         </div>
       </div> */}
+      <Footer />
     </>
   );
 });

@@ -57,6 +57,11 @@ li {
   text-align: left;
 }
 
+p.errorContainer {
+  color: var(--qwik-alert);
+  font-size: 0.8rem;
+}
+
 @media screen and (min-width: 576px) {
   h1 {
     font-size: 2rem;
@@ -170,6 +175,7 @@ code {
 .center {
   text-align: center;
   justify-content: center;
+  align-items: center;
 }
 .bgPurple {
   background: var(--qwik-light-purple);
@@ -185,6 +191,10 @@ code {
 
 .spaceBetween {
   justify-content: space-between;
+}
+
+.radius {
+  border-radius: 8px;
 }
 
 @media (min-width: 576px) {
@@ -226,7 +236,7 @@ code {
   color: var(--qwik-dirty-black);
   cursor: pointer;
   font-size: 0.8rem;
-  padding: 15px 20px;
+  padding: 0.5rem 1rem;
   text-align: center;
   text-transform: uppercase;
   transition: all 0.2s ease-in-out;
@@ -261,7 +271,7 @@ code {
 @media screen and (min-width: 768px) {
   .button {
     font-size: 1rem;
-    padding: 23px 35px;
+    padding: 1rem 2rem;
   }
 }
 

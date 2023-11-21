@@ -1,14 +1,13 @@
 import { component$ } from '@builder.io/qwik';
 import { LogoTricolor } from '../icons/logoTricolor';
 import styles from './header.module.css';
-import { Link } from '@builder.io/qwik-city';
-// Importer la fonction pour utiliser la session utilisateur
-import { useAuthSession } from '~/routes/plugin@auth';
+import { Link, useLocation } from '@builder.io/qwik-city';
+import Navigation from '~/components/Navigation/Navigation';
+import BackButton from '~/components/BackButton/BackButton';
 
 export default component$(() => {
-  const session = useAuthSession();
-
-  console.log(session.value?.user);
+  const location = useLocation();
+  console.log('location', location);
   return (
     <header class={styles.header}>
       <div class={['container', styles.wrapper]}>
@@ -22,26 +21,7 @@ export default component$(() => {
             />
           </Link>
         </div>
-        <ul>
-          <li>
-            <Link href='#projets'>Mes projets</Link>
-          </li>
-          <li>
-            <Link href='#examples'>Me contacter</Link>
-          </li>
-          <li>
-            {/* Afficher "Se déconnecter" si l'utilisateur est connecté, sinon "Se connecter" */}
-            {session.value?.user ? (
-              <a href={'/api/auth/signout?callbackUrl=http://localhost:5173'}>
-                Se déconnecter
-              </a>
-            ) : (
-              <a href={'/api/auth/signin?callbackUrl=http:///localhost:5173'}>
-                Se connecter
-              </a>
-            )}
-          </li>
-        </ul>
+        {location.url.pathname === '/' ? <Navigation /> : <BackButton />}
       </div>
     </header>
   );

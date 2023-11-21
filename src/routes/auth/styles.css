@@ -1,0 +1,30 @@
+.connexionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logContainer {
+  display: flex;
+
+  flex-grow: 1;
+}
+.logCardContainer {
+  flex-direction: column;
+  max-width: 500px;
+  background-color: var(--qwik-dirty-black);
+}
+.buttonIcon {
+  background-color: var(--qwik-dark-text);
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonIcon:hover {
+  background-color: var(--qwik-dark-text);
+  transform: scale3d(1.1, 1.1, 1.1);
+}
