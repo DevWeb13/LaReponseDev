@@ -5,6 +5,7 @@ import Header from '~/components/header/header';
 import styles from './styles.css?inline';
 
 import { isDev } from '~/routes/layout';
+import type { Session } from '@auth/core/types';
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -18,7 +19,6 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 };
 
 export const useProjectDetails = routeLoader$(async (requestEvent) => {
-  console.log('requestEvent', requestEvent.params.id);
   if (isDev) {
     try {
       const response = await fetch(
@@ -51,6 +51,19 @@ export const useProjectDetails = routeLoader$(async (requestEvent) => {
     }
   }
 });
+
+export const onRequest: RequestHandler = (event) => {
+  const session: Session | null = event.sharedMap.get('session');
+  if (!session || new Date(session.expires) < new Date()) {
+    throw event.redirect(
+      302,
+      new URL(
+        `api/auth/signin?callbackUrl=${encodeURIComponent(event.url.pathname)}`,
+        event.url.origin
+      ).toString()
+    );
+  }
+};
 
 export default component$(() => {
   useStyles$(styles);

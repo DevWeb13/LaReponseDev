@@ -2,10 +2,13 @@ import { component$ } from '@builder.io/qwik';
 import { LogoTricolor } from '../icons/logoTricolor';
 import styles from './header.module.css';
 import { Link } from '@builder.io/qwik-city';
-// import { useAuthSignin } from '~/routes/plugin@auth';
+// Importer la fonction pour utiliser la session utilisateur
+import { useAuthSession } from '~/routes/plugin@auth';
 
 export default component$(() => {
-  // const signIn = useAuthSignin();
+  const session = useAuthSession();
+
+  console.log(session.value?.user);
   return (
     <header class={styles.header}>
       <div class={['container', styles.wrapper]}>
@@ -27,7 +30,16 @@ export default component$(() => {
             <Link href='#examples'>Me contacter</Link>
           </li>
           <li>
-            <Link href='/api/auth/signin'>Se connecter</Link>
+            {/* Afficher "Se déconnecter" si l'utilisateur est connecté, sinon "Se connecter" */}
+            {session.value?.user ? (
+              <a href={'/api/auth/signout?callbackUrl=http://localhost:5173'}>
+                Se déconnecter
+              </a>
+            ) : (
+              <a href={'/api/auth/signin?callbackUrl=http:///localhost:5173'}>
+                Se connecter
+              </a>
+            )}
           </li>
         </ul>
       </div>

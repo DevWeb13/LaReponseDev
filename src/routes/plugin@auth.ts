@@ -7,6 +7,19 @@ export const { onRequest, useAuthSession, useAuthSignin, useAuthSignout } =
   serverAuth$(({ env }) => ({
     secret: env.get('AUTH_SECRET'),
     trustHost: true,
+    pages: {
+      signIn: '/auth/signin',
+      signOut: '/auth/signout',
+      error: '/auth/error',
+      verifyRequest: '/auth/verify-request',
+      newUser: '/auth/new-user',
+    },
+    theme: {
+      colorScheme: 'dark', // ou 'dark'
+      brandColor: '#ff5722', // Exemple de couleur
+      colorText: 'white', // Exemple de couleur de texte
+      logo: '/assets/svg/logoLRD.svg', // URL de votre logo
+    },
 
     providers: [
       Google({
