@@ -6,14 +6,15 @@ import {
   useVisibleTask$,
 } from '@builder.io/qwik';
 import styles from './project.module.css';
-import { useProjectDetails } from '~/routes/project/[id]/layout';
-import type { Project } from '~/components/projects/projects';
+import { useProjectDetailsLoader } from '~/routes/project/[id]/layout';
+
 import QMyImageGallery from '~/integrations/react/myGallery';
 
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { Link } from '@builder.io/qwik-city';
 import { ProjectDetails } from '~/components/projectDetails/ProjectDetails';
 import SonarCloudBadges from '~/components/SonarCloudBadges';
+import type { ProjectType } from '~/types/project';
 
 function useWindowWidth() {
   const isMobile = useSignal<boolean>(false);
@@ -47,13 +48,18 @@ function useWindowWidth() {
 export default component$(() => {
   const indexSignal = useSignal<number>(0);
   const isMobile = useWindowWidth();
-  console.log('isMobile', isMobile.value);
+
+  const project = useProjectDetailsLoader();
+
+  if ('errorMessage' in project.value) {
+    return <div>{project.value.errorMessage}</div>;
+  }
 
   const handleSlide = $(function handleSlide(index: number) {
     indexSignal.value = index;
   });
 
-  function createArrayImages(project: Project) {
+  function createArrayImages(project: ProjectType) {
     const arrayImages = [];
     for (let i = 0; i < project.pages.length; i++) {
       arrayImages.push({
@@ -68,10 +74,8 @@ export default component$(() => {
     return arrayImages;
   }
 
-  const project = useProjectDetails();
-
   const images = createArrayImages(project.value);
-  // console.log('project', project.value);
+
   const {
     // _id,
     name,
@@ -83,10 +87,9 @@ export default component$(() => {
     logo,
     sonarCloudProjectKey,
   } = project.value;
-  console.log('project', project.value);
 
   return (
-    <main class='bigCont'>
+    <main class='main'>
       <div class='ellipsis ' />
       <header class='container column center'>
         <h1 class={styles.projectName + ' ' + 'highlight'}>{name}</h1>

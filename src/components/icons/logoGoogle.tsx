@@ -1,3 +1,5 @@
+// src/components/icons/logoGoogle.tsx
+
 export const LogoGoogle = ({
   width = 30,
   height = 30,

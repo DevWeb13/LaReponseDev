@@ -1,6 +1,7 @@
 import { component$ } from '@builder.io/qwik';
 import styles from './hero.module.css';
 import { Link } from '@builder.io/qwik-city';
+import { LineMdLaptop, LineMdEmail } from '../../icons/AnimatedIcons';
 
 export default component$(() => {
   return (
@@ -15,13 +16,21 @@ export default component$(() => {
         <Link
           href='#projets'
           class='button'>
-          Mes projets
+          <LineMdLaptop
+            height={40}
+            width={40}
+          />
+          Réalisations
         </Link>
 
         <Link
           href='https://qwik.builder.io/docs'
           target='_blank'
           class='button button-dark'>
+          <LineMdEmail
+            height={40}
+            width={40}
+          />
           Me contacter
         </Link>
       </div>

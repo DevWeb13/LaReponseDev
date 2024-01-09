@@ -1,0 +1,42 @@
+.nav {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.5rem;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10000;
+}
+
+.navLinkText {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .nav {
+    gap: 0.8rem;
+  }
+
+  .icon {
+    min-width: 30px;
+  }
+
+  .navLinkText {
+    display: block;
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  .nav:hover .navLinkText {
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+    transition-delay: 0.2s;
+    transform: translateX(0);
+  }
+
+  .nav:hover a {
+    width: 100%;
+    transition: width 0.2s ease-in-out;
+  }
+}

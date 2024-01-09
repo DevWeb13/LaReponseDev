@@ -1,33 +1,59 @@
+// src/components/Navigation/Navigation.tsx
+
 import { component$ } from '@builder.io/qwik';
-import { Link } from '@builder.io/qwik-city';
-import { useAuthSession } from '~/routes/plugin@auth';
+import { NavLink } from '../NavLink/NavLink';
+import styles from './navigation.module.css';
+import {
+  LineMdHomeMd,
+  LineMdDownloadingLoop,
+  LineMdLaptop,
+  LineMdEmail,
+} from '../icons/AnimatedIcons';
 
 export default component$(() => {
-  const session = useAuthSession();
-
-  console.log(session.value?.user);
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link href='#projets'>Mes projets</Link>
-        </li>
-        <li>
-          <Link href='#examples'>Me contacter</Link>
-        </li>
-        <li>
-          {/* Afficher "Se déconnecter" si l'utilisateur est connecté, sinon "Se connecter" */}
-          {session.value?.user ? (
-            <a href={'/api/auth/signout?callbackUrl=http://localhost:5173'}>
-              Se déconnecter
-            </a>
-          ) : (
-            <a href={'/api/auth/signin?callbackUrl=http:///localhost:5173'}>
-              Se connecter
-            </a>
-          )}
-        </li>
-      </ul>
+    <nav class={styles.nav}>
+      <NavLink
+        href='#home'
+        activeClass={styles.active}>
+        <LineMdHomeMd
+          height={30}
+          width={30}
+          class={styles.icon}
+        />
+
+        <span class={styles.navLinkText}>Accueil</span>
+      </NavLink>
+      <NavLink
+        href='#services'
+        activeClass={styles.active}>
+        <LineMdDownloadingLoop
+          height={30}
+          width={30}
+          class={styles.icon}
+        />
+        <span class={styles.navLinkText}>Mes services</span>
+      </NavLink>
+      <NavLink
+        href='#projects'
+        activeClass={styles.active}>
+        <LineMdLaptop
+          height={30}
+          width={30}
+          class={styles.icon}
+        />
+        <span class={styles.navLinkText}>Réalisations</span>
+      </NavLink>
+      <NavLink
+        href='#contact'
+        activeClass={styles.active}>
+        <LineMdEmail
+          height={30}
+          width={30}
+          class={styles.icon}
+        />
+        <span class={styles.navLinkText}>Contact</span>
+      </NavLink>
     </nav>
   );
 });

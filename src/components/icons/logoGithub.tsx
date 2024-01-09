@@ -1,3 +1,5 @@
+// src/components/icons/logoGithub.tsx
+
 export const LogoGithub = ({
   width = 40,
   height = 40,

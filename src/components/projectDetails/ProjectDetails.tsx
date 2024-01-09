@@ -2,14 +2,10 @@ import type { Signal } from '@builder.io/qwik';
 import { component$ } from '@builder.io/qwik';
 import styles from './projectDetails.module.css';
 
+import type { PageType } from '~/types/project';
+
 interface ProjectDetailsProps {
-  pages: Array<{
-    _id: string;
-    image: string;
-    description: string;
-    url: string;
-    features: string[];
-  }>;
+  pages: PageType[];
   indexSignal: Signal<number>;
 }
 

@@ -1,7 +1,13 @@
+// src/routes/plugin@auth.ts
+
 import { serverAuth$ } from '@builder.io/qwik-auth';
 import Google from '@auth/core/providers/google';
 import GitHub from '@auth/core/providers/github';
+
 import type { Provider } from '@auth/core/providers';
+
+import connect from '~/server/connect-db';
+import User from '~/server/models/User';
 
 export const { onRequest, useAuthSession, useAuthSignin, useAuthSignout } =
   serverAuth$(({ env }) => ({
@@ -9,18 +15,7 @@ export const { onRequest, useAuthSession, useAuthSignin, useAuthSignout } =
     trustHost: true,
     pages: {
       signIn: '/auth/signin',
-      signOut: '/auth/signout',
-      error: '/auth/error',
-      verifyRequest: '/auth/verify-request',
-      newUser: '/auth/new-user',
     },
-    theme: {
-      colorScheme: 'dark', // ou 'dark'
-      brandColor: '#ff5722', // Exemple de couleur
-      colorText: 'white', // Exemple de couleur de texte
-      logo: '/assets/svg/logoLRD.svg', // URL de votre logo
-    },
-
     providers: [
       Google({
         clientId: env.get('GOOGLE_ID')!,
@@ -31,4 +26,33 @@ export const { onRequest, useAuthSession, useAuthSignin, useAuthSignout } =
         clientSecret: env.get('GITHUB_SECRET')!,
       }),
     ] as Provider[],
+    callbacks: {
+      signIn: async ({ user }) => {
+        // console.log({ user, account, profile });
+        try {
+          await connect();
+
+          const existingUser = await User.findOne({ email: user.email });
+
+          if (existingUser) {
+            if (
+              user.name !== existingUser.name ||
+              user.image !== existingUser.image
+            ) {
+              await User.updateOne(
+                { email: user.email },
+                { $set: { name: user.name, image: user.image } }
+              );
+            }
+            return true;
+          }
+
+          await User.create(user);
+          return true;
+        } catch (err) {
+          console.error("Erreur lors de la création de l'utilisateur :", err);
+          throw new Error("Échec de la création de l'utilisateur");
+        }
+      },
+    },
   }));

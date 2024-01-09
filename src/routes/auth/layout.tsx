@@ -1,5 +1,7 @@
+// src/routes/auth/layout.tsx
+
 import { Slot, component$, useStyles$ } from '@builder.io/qwik';
-import type { RequestHandler } from '@builder.io/qwik-city';
+import { type RequestHandler } from '@builder.io/qwik-city';
 
 import styles from './styles.css?inline';
 import Footer from '~/components/footer/footer';
@@ -21,8 +23,11 @@ export default component$(() => {
   return (
     <>
       <Header />
-      <Slot />
-
+      <section class='connexionContainer logContainer container'>
+        <article class='logCardContainer containerSmall radius'>
+          <Slot />
+        </article>
+      </section>
       <Footer />
     </>
   );

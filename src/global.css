@@ -9,11 +9,14 @@
 :root {
   --qwik-dark-blue: #006ce9;
   --qwik-light-blue: #00a1ff;
+  --qwik-dark-green: #00ca9e;
   --qwik-light-green: #00ff8f;
-  --qwik-light-purple: #ac7ff4;
+  --qwik-light-purple: rgb(172, 127, 244);
+  --qwik-light-purple-transparent: rgba(172, 127, 244, 0.5);
   --qwik-dark-purple: #713fc2;
   --qwik-dirty-black: #1d2033;
-  --qwik-dark-background: #151934;
+  --qwik-dark-background: rgb(21, 25, 52);
+  --qwik-dark-transparent-background: rgba(21, 25, 52, 0.5);
   --qwik-dark-text: #ffffff;
   --qwik-alert: #ff0000;
   scroll-behavior: smooth;
@@ -38,6 +41,7 @@ body {
   color: var(--qwik-dark-text);
   overflow-x: hidden;
   align-items: center;
+  min-height: 100svh;
 }
 
 /**

@@ -1,0 +1,27 @@
+a.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  /* color: var(--qwik-dark-text); */
+  background-color: var(--qwik-light-purple-transparent);
+  /* font-size: 2rem; */
+
+  max-height: 62px;
+}
+
+a.link:hover {
+  color: var(--qwik-light-green);
+  background-color: var(--qwik-light-purple);
+}
+
+a.active {
+  color: var(--qwik-dirty-black);
+  background-color: var(--qwik-light-purple);
+}
+
+@media (min-width: 768px) {
+  a.link {
+    width: 62px;
+  }
+}
