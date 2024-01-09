@@ -2,7 +2,7 @@
   "name": "lareponsedev",
   "description": "LaReponseDev - Qwik App",
   "engines": {
-    "node": ">=15.0.0"
+    "node": "18.x"
   },
   "private": true,
   "scripts": {
