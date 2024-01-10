@@ -1,3 +1,5 @@
+// src/server/connect-db.ts
+
 import mongoose from 'mongoose';
 const uri = process.env['MONGODB_URI'] as string;
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
