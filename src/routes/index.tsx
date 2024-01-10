@@ -12,12 +12,12 @@ import {
   useVisibleTask$,
 } from '@builder.io/qwik';
 import { type DocumentHead, useNavigate } from '@builder.io/qwik-city';
-import StartView from '~/components/startView/startView';
+// import StartView from '~/components/startView/startView';
 
-import Projects from '~/components/projects/projects';
-import { useAuthSession } from '~/routes/plugin@auth';
-import Footer from '~/components/footer/footer';
-import Services from '~/components/Services/Services';
+// import Projects from '~/components/projects/projects';
+// import { useAuthSession } from '~/routes/plugin@auth';
+// import Footer from '~/components/footer/footer';
+// import Services from '~/components/Services/Services';
 
 function useScrollPosition() {
   const scrollPosition = useSignal(0);
@@ -40,7 +40,7 @@ export const isAutoScrollingContext = createContextId<Signal<boolean>>(
 );
 
 export default component$(() => {
-  const session = useAuthSession();
+  // const session = useAuthSession();
   const nav = useNavigate();
 
   const activeLink = useSignal('home');
@@ -116,7 +116,7 @@ export default component$(() => {
 
   return (
     <>
-      <p>{session.value?.user?.email}</p>
+      {/* <p>{session.value?.user?.email}</p>
       <StartView
         id='home'
         ref={homeRef}
@@ -132,7 +132,8 @@ export default component$(() => {
         />
       </main>
 
-      <Footer />
+      <Footer /> */}
+      <p>test</p>
     </>
   );
 });
