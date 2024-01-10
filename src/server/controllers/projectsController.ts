@@ -1,23 +1,27 @@
 // src/server/controllers/projectsController.ts
 
+import { server$ } from '@builder.io/qwik-city';
+
 import Project from '../models/Project';
 import connect from '../connect-db';
 import { ProjectType } from '~/types/project';
 
-export const getAllProjects = async (): Promise<ProjectType[] | null> => {
-  await connect();
-  const projects = await Project.find();
-  if (projects) {
-    const transformedProjects: ProjectType[] = projects.map((project) => ({
-      ...project.toObject(),
-      _id: project._id.toString(),
-      pages: [],
-    }));
+export const getAllProjects = server$(
+  async (): Promise<ProjectType[] | null> => {
+    await connect();
+    const projects = await Project.find();
+    if (projects) {
+      const transformedProjects: ProjectType[] = projects.map((project) => ({
+        ...project.toObject(),
+        _id: project._id.toString(),
+        pages: [],
+      }));
 
-    return transformedProjects;
+      return transformedProjects;
+    }
+    return null;
   }
-  return null;
-};
+);
 
 export const getOneProject = async (
   id: string
