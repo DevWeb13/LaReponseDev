@@ -21,6 +21,10 @@ export default defineConfig(() => {
     },
     optimizeDeps: {
       include: [ "@auth/core" ]
-    }
+    },
+    build: {
+      sourcemap: true, // active la génération de source maps pour la production
+      // ...
+    },
   };
 });

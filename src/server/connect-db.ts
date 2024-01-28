@@ -10,6 +10,7 @@ const uri = process.env['MONGODB_URI'] as string;
  */
 const connect = async () => {
   if (mongoose.connections[0].readyState) {
+    console.log('uri', uri);
     console.log('Already connected to database');
     return;
   }

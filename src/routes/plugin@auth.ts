@@ -18,12 +18,12 @@ export const { onRequest, useAuthSession, useAuthSignin, useAuthSignout } =
     },
     providers: [
       Google({
-        clientId: env.get('GOOGLE_ID')!,
-        clientSecret: env.get('GOOGLE_SECRET')!,
+        clientId: env.get('GOOGLE_ID') as string,
+        clientSecret: env.get('GOOGLE_SECRET') as string,
       }),
       GitHub({
-        clientId: env.get('GITHUB_ID')!,
-        clientSecret: env.get('GITHUB_SECRET')!,
+        clientId: env.get('GITHUB_ID') as string,
+        clientSecret: env.get('GITHUB_SECRET') as string,
       }),
     ] as Provider[],
     callbacks: {
