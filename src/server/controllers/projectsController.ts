@@ -1,16 +1,26 @@
 // src/server/controllers/projectsController.ts
 
 import { server$ } from '@builder.io/qwik-city';
-import { PrismaClient } from '@prisma/client';
 
-import Project from '../models/Project';
+// import Project from '../models/Project';
 // import connect from '../connect-db';
 import { ProjectType, PageType } from '~/types/project';
+
+async function getPrismaClient() {
+  if (process.env.VERCEL_ENV) {
+    // Vérifiez si vous êtes sur Vercel
+    const { PrismaClient } = await import('@prisma/client/edge');
+    return new PrismaClient();
+  } else {
+    const { PrismaClient } = await import('@prisma/client');
+    return new PrismaClient();
+  }
+}
 
 export const getAllProjects = server$(
   async (): Promise<ProjectType[] | null> => {
     console.log('DATABASE_URL:', process.env.DATABASE_URL);
-    const prisma = new PrismaClient();
+    const prisma = await getPrismaClient();
 
     try {
       const projects = await prisma.project.findMany();
@@ -48,7 +58,7 @@ export const getAllProjects = server$(
 
 export const getOneProject = server$(
   async (id: string): Promise<ProjectType | null> => {
-    const prisma = new PrismaClient();
+    const prisma = await getPrismaClient();
 
     try {
       const project = await prisma.project.findUnique({
