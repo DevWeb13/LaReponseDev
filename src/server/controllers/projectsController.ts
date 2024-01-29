@@ -1,7 +1,7 @@
 // src/server/controllers/projectsController.ts
 
 import { server$ } from '@builder.io/qwik-city';
-import { PrismaClient } from '@prisma/client/edge';
+import { PrismaClient } from '@prisma/client';
 
 import Project from '../models/Project';
 // import connect from '../connect-db';
@@ -9,10 +9,12 @@ import { ProjectType, PageType } from '~/types/project';
 
 export const getAllProjects = server$(
   async (): Promise<ProjectType[] | null> => {
+    console.log('DATABASE_URL:', process.env.DATABASE_URL);
     const prisma = new PrismaClient();
 
     try {
       const projects = await prisma.project.findMany();
+      console.log('projects:', projects);
 
       return projects.map((project) => {
         // Transformer les pages pour chaque projet
