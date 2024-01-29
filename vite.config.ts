@@ -8,11 +8,11 @@ import { qwikReact } from "@builder.io/qwik-react/vite";
 
 export default defineConfig(() => {
   return {
-    resolve: {
-      alias: {
-        ".prisma/client/index-browser": "./node_modules/.prisma/client/index-browser"
-      }
-    },
+    // resolve: {
+    //   alias: {
+    //     ".prisma/client/edge": "./node_modules/.prisma/client/edge.js"
+    //   }
+    // },
     plugins: [qwikCity(), qwikVite(), tsconfigPaths(), qwikReact()],
     dev: {
       headers: {
