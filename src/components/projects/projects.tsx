@@ -33,7 +33,7 @@ export default component$(
           {projects.value?.map((project) => (
             <div
               class={styles.projectContainer}
-              key={project._id}>
+              key={project.id}>
               <img
                 src={project.image}
                 alt={project.description}
@@ -57,7 +57,7 @@ export default component$(
                   />
                 </div>
                 <Link
-                  href={`/project/${project._id}`}
+                  href={`/project/${project.id}`}
                   class={styles.button + ' ' + 'button'}>
                   En savoir plus
                 </Link>
