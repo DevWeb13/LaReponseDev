@@ -3,8 +3,6 @@
 import { server$ } from '@builder.io/qwik-city';
 import { PrismaClient } from '@prisma/client';
 
-import Project from '../models/Project';
-// import connect from '../connect-db';
 import { ProjectType, PageType } from '~/types/project';
 
 export const getAllProjects = server$(
