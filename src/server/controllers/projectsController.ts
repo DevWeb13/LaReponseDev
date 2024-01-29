@@ -1,7 +1,7 @@
 // src/server/controllers/projectsController.ts
 
 import { server$ } from '@builder.io/qwik-city';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client/edge';
 
 import Project from '../models/Project';
 // import connect from '../connect-db';
