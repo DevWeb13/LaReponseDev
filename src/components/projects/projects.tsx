@@ -3,8 +3,8 @@
 import type { Signal } from '@builder.io/qwik';
 import { component$ } from '@builder.io/qwik';
 import styles from './projects.module.css';
-// import { useProjectsLoader } from '~/routes/layout';
-// import { Link } from '@builder.io/qwik-city';
+import { useProjectsLoader } from '~/routes/layout';
+import { Link } from '@builder.io/qwik-city';
 
 export default component$(
   ({
@@ -14,12 +14,12 @@ export default component$(
     id?: string;
     ref?: Signal<HTMLElement | undefined>;
   }) => {
-    // const projects = useProjectsLoader();
-    // // console.log(projects.value);
+    const projects = useProjectsLoader();
+    console.log(projects.value);
 
-    // if ('errorMessage' in projects.value) {
-    //   return <div>{projects.value.errorMessage}</div>;
-    // }
+    if ('errorMessage' in projects.value) {
+      return <div>{projects.value.errorMessage}</div>;
+    }
 
     return (
       <section
@@ -29,7 +29,7 @@ export default component$(
         <h2 class={styles.projectsTitle}>
           Les projets de <span class='highlight'>LaReponseDev</span>
         </h2>
-        {/* <div class={styles.projects}>
+        <div class={styles.projects}>
           {projects.value?.map((project) => (
             <div
               class={styles.projectContainer}
@@ -77,8 +77,8 @@ export default component$(
                 </Link>
               </div>
             </div>
-          ))} */}
-        {/* </div> */}
+          ))}
+        </div>
       </section>
     );
     // return <div>test</div>;

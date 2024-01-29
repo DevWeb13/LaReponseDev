@@ -1,5 +1,7 @@
 // src/types/project.ts
 
+import type { JsonValue } from '@prisma/client/runtime/library';
+
 export type PageType = {
   image: string;
   description: string;
@@ -8,12 +10,12 @@ export type PageType = {
 };
 
 export type ProjectType = {
-  _id: string;
+  id: string;
   name: string;
   description: string;
   image: string;
   url: string;
-  pages: PageType[];
+  pages: JsonValue;
   github: string;
   date: string;
   category: string;

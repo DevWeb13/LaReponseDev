@@ -1,46 +1,42 @@
 // src/server/controllers/projectsController.ts
 
 import { server$ } from '@builder.io/qwik-city';
+import { PrismaClient } from '@prisma/client';
 
 import Project from '../models/Project';
-import connect from '../connect-db';
+// import connect from '../connect-db';
 import { ProjectType } from '~/types/project';
 
 export const getAllProjects = server$(
   async (): Promise<ProjectType[] | null> => {
-    await connect();
-    const projects = await Project.find();
-    if (projects) {
-      const transformedProjects: ProjectType[] = projects.map((project) => ({
-        ...project.toObject(),
-        _id: project._id.toString(),
-        pages: [],
-      }));
+    const prisma = new PrismaClient();
+    const projects = await prisma.project.findMany();
 
-      return transformedProjects;
+    if (projects) {
+      return projects;
     }
     return null;
   }
 );
 
-export const getOneProject = async (
-  id: string
-): Promise<ProjectType | null> => {
-  await connect();
-  const project = await Project.findOne({ _id: id });
-  if (project) {
-    const transformedProject: ProjectType = {
-      ...project.toObject(),
-      _id: project._id.toString(),
-      pages: project.pages.map((page) => ({
-        ...page.toObject(),
-        _id: page._id?.toString(),
-      })),
-    };
-    return transformedProject;
-  }
-  return null;
-};
+// export const getOneProject = async (
+//   id: string
+// ): Promise<ProjectType | null> => {
+//   await connect();
+//   const project = await Project.findOne({ _id: id });
+//   if (project) {
+//     const transformedProject: ProjectType = {
+//       ...project.toObject(),
+//       _id: project._id.toString(),
+//       pages: project.pages.map((page) => ({
+//         ...page.toObject(),
+//         _id: page._id?.toString(),
+//       })),
+//     };
+//     return transformedProject;
+//   }
+//   return null;
+// };
 
 // export const createProject = async (project) => {
 //   try {

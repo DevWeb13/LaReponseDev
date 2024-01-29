@@ -1,9 +1,9 @@
 // src/routes/layout.tsx
 
 import { component$, Slot, useStyles$ } from '@builder.io/qwik';
-// import { routeLoader$ } from '@builder.io/qwik-city';
+import { routeLoader$ } from '@builder.io/qwik-city';
 import styles from './styles.css?inline';
-// import { getAllProjects } from '~/server/controllers/projectsController';
+import { getAllProjects } from '~/server/controllers/projectsController';
 import type { RequestHandler } from '@builder.io/qwik-city';
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
@@ -17,15 +17,17 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
   });
 };
 
-// export const useProjectsLoader = routeLoader$(async (requestEvent) => {
-//   const projects = await getAllProjects();
-//   if (projects) {
-//     return projects;
-//   }
-//   return requestEvent.fail(404, {
-//     errorMessage: 'Projects non trouvés',
-//   });
-// });
+// src/routes/layout.tsx
+
+export const useProjectsLoader = routeLoader$(async (requestEvent) => {
+  const projects = await getAllProjects();
+  if (projects) {
+    return projects;
+  }
+  return requestEvent.fail(404, {
+    errorMessage: 'Projects non trouvés',
+  });
+});
 
 export default component$(() => {
   useStyles$(styles);

@@ -14,7 +14,7 @@ import {
 import { type DocumentHead, useNavigate } from '@builder.io/qwik-city';
 import StartView from '~/components/startView/startView';
 
-// import Projects from '~/components/projects/projects';
+import Projects from '~/components/projects/projects';
 // import { useAuthSession } from '~/routes/plugin@auth';
 import Footer from '~/components/footer/footer';
 import Services from '~/components/Services/Services';
@@ -126,10 +126,10 @@ export default component$(() => {
           id='services'
           ref={servicesRef}
         />
-        {/* <Projects
+        <Projects
           id='projects'
           ref={projectsRef}
-        /> */}
+        />
       </main>
 
       <Footer />

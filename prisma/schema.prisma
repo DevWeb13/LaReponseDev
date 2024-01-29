@@ -1,0 +1,37 @@
+// prisma/schema.prisma
+
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id                 String  @id @default(auto()) @map("_id") @db.ObjectId
+  name               String
+  description        String
+  image              String
+  url                String
+  pages              Json[]
+  github             String
+  date               String   // Assurez-vous que ce format de date est compatible avec Prisma
+  category           String
+  technologies       String[]
+  logo               String
+  sonarCloudProjectKey String
+  @@map("projects")
+}
+
+
+
+
+
+
