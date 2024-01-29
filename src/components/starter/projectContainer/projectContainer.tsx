@@ -1,3 +1,5 @@
+// src/components/starter/projectContainer/projectContainer.tsx
+
 import { component$, useVisibleTask$, $, useSignal } from '@builder.io/qwik';
 import styles from './projectContainer.module.css';
 import type { Signal } from '@builder.io/qwik';

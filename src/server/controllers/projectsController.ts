@@ -5,17 +5,82 @@ import { PrismaClient } from '@prisma/client';
 
 import Project from '../models/Project';
 // import connect from '../connect-db';
-import { ProjectType } from '~/types/project';
+import { ProjectType, PageType } from '~/types/project';
 
 export const getAllProjects = server$(
   async (): Promise<ProjectType[] | null> => {
     const prisma = new PrismaClient();
-    const projects = await prisma.project.findMany();
 
-    if (projects) {
-      return projects;
+    try {
+      const projects = await prisma.project.findMany();
+
+      return projects.map((project) => {
+        // Transformer les pages pour chaque projet
+        const serializedPages = project.pages
+          .map((page) => {
+            if (page && typeof page === 'object') {
+              const typedPage = page as PageType;
+              return {
+                image: typedPage.image,
+                description: typedPage.description,
+                url: typedPage.url,
+                features: typedPage.features,
+              };
+            }
+            return null;
+          })
+          .filter((page): page is PageType => page !== null) as PageType[];
+
+        // Retourner le projet avec les pages transformées
+        return {
+          ...project,
+          pages: serializedPages,
+        };
+      });
+    } catch (error) {
+      console.error('Erreur lors de la récupération des projets :', error);
+      return null;
     }
-    return null;
+  }
+);
+
+export const getOneProject = server$(
+  async (id: string): Promise<ProjectType | null> => {
+    const prisma = new PrismaClient();
+
+    try {
+      const project = await prisma.project.findUnique({
+        where: { id: id },
+      });
+
+      if (project && Array.isArray(project.pages)) {
+        const serializedPages = project.pages
+          .map((page) => {
+            if (page && typeof page === 'object') {
+              const typedPage = page as PageType;
+              return {
+                image: typedPage.image,
+                description: typedPage.description,
+                url: typedPage.url,
+                features: typedPage.features,
+              };
+            }
+            return null;
+          })
+          .filter((page): page is PageType => page !== null) as PageType[]; // Ajout d'une assertion de type
+
+        const transformedProject: ProjectType = {
+          ...project,
+          pages: serializedPages,
+        };
+
+        return transformedProject;
+      }
+      return null;
+    } catch (error) {
+      console.error('Erreur lors de la récupération du projet :', error);
+      return null;
+    }
   }
 );
 
