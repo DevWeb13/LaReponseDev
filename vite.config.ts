@@ -10,7 +10,7 @@ export default defineConfig(() => {
   return {
     resolve: {
       alias: {
-        ".prisma/client": "./node_modules/.prisma/client/edge.js"
+        ".prisma/client/edge": "./node_modules/.prisma/client/edge.js"
       }
     },
     plugins: [qwikCity(), qwikVite(), tsconfigPaths(), qwikReact()],
