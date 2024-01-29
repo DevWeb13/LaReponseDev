@@ -2,9 +2,9 @@
 
 import { component$ } from '@builder.io/qwik';
 // import { useAuthSignin } from '~/routes/plugin@auth';
-import { LogoGithub } from '~/components/icons/logoGithub';
-import { LogoGoogle } from '~/components/icons/logoGoogle';
-import Button from '~/components/Button/Button';
+// import { LogoGithub } from '~/components/icons/logoGithub';
+// import { LogoGoogle } from '~/components/icons/logoGoogle';
+// import Button from '~/components/Button/Button';
 
 export default component$(() => {
   // const signIn = useAuthSignin();
