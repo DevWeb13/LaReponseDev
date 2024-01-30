@@ -17,8 +17,6 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
   });
 };
 
-// src/routes/layout.tsx
-
 export const useProjectsLoader = routeLoader$(async (requestEvent) => {
   const projects = await getAllProjects();
   if (projects) {
