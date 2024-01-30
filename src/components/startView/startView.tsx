@@ -20,7 +20,7 @@ export default component$(
         <Header />
         <div class={styles.videoContainer}>
           <video
-            autoPlay
+            autoplay
             muted
             loop
             playsInline
