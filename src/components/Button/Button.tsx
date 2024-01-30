@@ -1,6 +1,6 @@
 // src/components/Button/Button.tsx
 
-import { Slot, component$, $ } from '@builder.io/qwik';
+import { Slot, component$ } from '@builder.io/qwik';
 import styles from './button.module.css';
 
 interface ButtonProps {
