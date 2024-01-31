@@ -3,15 +3,18 @@
 import type { Signal } from '@builder.io/qwik';
 import {
   component$,
-  useOnDocument,
+  // useOnDocument,
   useSignal,
   $,
   useContextProvider,
   createContextId,
-  useTask$,
-  useVisibleTask$,
+  // useTask$,
+  // useVisibleTask$,
 } from '@builder.io/qwik';
-import { type DocumentHead, useNavigate } from '@builder.io/qwik-city';
+import {
+  type DocumentHead,
+  // useNavigate
+} from '@builder.io/qwik-city';
 import StartView from '~/components/startView/startView';
 
 import Projects from '~/components/projects/projects';
@@ -19,17 +22,17 @@ import Projects from '~/components/projects/projects';
 import Footer from '~/components/footer/footer';
 import Services from '~/components/Services/Services';
 
-function useScrollPosition() {
-  const scrollPosition = useSignal(0);
-  useOnDocument(
-    'scroll',
-    $((e) => {
-      scrollPosition.value = (e.target as HTMLElement)?.scrollTop;
-      // scrollPosition.value = window.scrollY;
-    })
-  );
-  return scrollPosition;
-}
+// function useScrollPosition() {
+//   const scrollPosition = useSignal(0);
+//   useOnDocument(
+//     'scroll',
+//     $((e) => {
+//       scrollPosition.value = (e.target as HTMLElement)?.scrollTop;
+//       // scrollPosition.value = window.scrollY;
+//     })
+//   );
+//   return scrollPosition;
+// }
 
 export const ActiveLinkContext = createContextId<Signal<string>>(
   'docs.activeLink-context'
@@ -41,7 +44,7 @@ export const isAutoScrollingContext = createContextId<Signal<boolean>>(
 
 export default component$(() => {
   // const session = useAuthSession();
-  const nav = useNavigate();
+  // const nav = useNavigate();
 
   const activeLink = useSignal('home');
   useContextProvider(ActiveLinkContext, activeLink);
@@ -52,67 +55,67 @@ export default component$(() => {
   const servicesRef = useSignal<HTMLElement>();
   const projectsRef = useSignal<HTMLElement>();
 
-  const scrollPosition = useScrollPosition();
+  // const scrollPosition = useScrollPosition();
 
-  const updateURL = $((sectionId: string) => {
-    const url = `#${sectionId}`;
-    console.log('updateURL', url);
-    nav(url);
-  });
-  useTask$(() => {
-    updateURL(activeLink.value);
-  });
+  // const updateURL = $((sectionId: string) => {
+  //   const url = `#${sectionId}`;
+  //   console.log('updateURL', url);
+  //   nav(url);
+  // });
+  // useTask$(() => {
+  //   updateURL(activeLink.value);
+  // });
 
-  useTask$(({ track, cleanup }) => {
-    // track scroll position
-    track(scrollPosition);
+  // useTask$(({ track, cleanup }) => {
+  //   // track scroll position
+  //   track(scrollPosition);
 
-    let observer: IntersectionObserver;
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5,
-    };
-    if (homeRef.value && servicesRef.value && projectsRef.value) {
-      observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            if (entry.target === homeRef.value) {
-              activeLink.value = 'home';
-            } else if (entry.target === servicesRef.value) {
-              activeLink.value = 'services';
-            } else if (entry.target === projectsRef.value) {
-              activeLink.value = 'projects';
-            }
-          }
-        });
-      }, options);
-      observer.observe(homeRef.value);
-      observer.observe(servicesRef.value);
-      observer.observe(projectsRef.value);
-    }
-    cleanup(() => {
-      if (observer) {
-        observer.disconnect();
-      }
-    });
-  });
+  //   let observer: IntersectionObserver;
+  //   const options = {
+  //     root: null,
+  //     rootMargin: '0px',
+  //     threshold: 0.5,
+  //   };
+  //   if (homeRef.value && servicesRef.value && projectsRef.value) {
+  //     observer = new IntersectionObserver((entries) => {
+  //       entries.forEach((entry) => {
+  //         if (entry.isIntersecting) {
+  //           if (entry.target === homeRef.value) {
+  //             activeLink.value = 'home';
+  //           } else if (entry.target === servicesRef.value) {
+  //             activeLink.value = 'services';
+  //           } else if (entry.target === projectsRef.value) {
+  //             activeLink.value = 'projects';
+  //           }
+  //         }
+  //       });
+  //     }, options);
+  //     observer.observe(homeRef.value);
+  //     observer.observe(servicesRef.value);
+  //     observer.observe(projectsRef.value);
+  //   }
+  //   cleanup(() => {
+  //     if (observer) {
+  //       observer.disconnect();
+  //     }
+  //   });
+  // });
 
-  useVisibleTask$(({ track, cleanup }) => {
-    track(activeLink);
+  // useVisibleTask$(({ track, cleanup }) => {
+  //   track(activeLink);
 
-    if (isAutoScrolling.value) {
-      const time = setTimeout(() => {
-        isAutoScrolling.value = false;
-      }, 1000);
-      cleanup(() => {
-        clearTimeout(time);
-      });
-      return;
-    }
+  //   if (isAutoScrolling.value) {
+  //     const time = setTimeout(() => {
+  //       isAutoScrolling.value = false;
+  //     }, 1000);
+  //     cleanup(() => {
+  //       clearTimeout(time);
+  //     });
+  //     return;
+  //   }
 
-    updateURL(activeLink.value);
-  });
+  //   updateURL(activeLink.value);
+  // });
 
   return (
     <>
