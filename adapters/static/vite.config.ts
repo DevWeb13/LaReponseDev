@@ -12,7 +12,7 @@ export default extendConfig(baseConfig, () => {
     },
     plugins: [
       staticAdapter({
-        origin: "https://la-reponse-dev.vercel.app/",
+        origin: "https://la-reponse-dev.vercel.app",
       }),
     ],
   };
