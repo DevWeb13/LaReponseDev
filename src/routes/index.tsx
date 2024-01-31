@@ -133,7 +133,6 @@ export default component$(() => {
       </main>
 
       <Footer />
-      <p>test</p>
     </>
   );
 });
